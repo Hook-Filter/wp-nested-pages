@@ -151,9 +151,20 @@ class PostCloner
 			$meta_values = \get_post_custom_values($meta_key, $original_id);
 			delete_post_meta( $new_id, $meta_key );
 			foreach ( $meta_values as $meta_value ) {
-				$meta_value = \maybe_unserialize($meta_value );
+				$meta_value = $this->safeUnserialize($meta_value);
 				add_post_meta( $new_id, $meta_key, wp_slash( $meta_value ) );
 			}
 		}
+	}
+
+	/**
+	* Unserialize a raw meta value without instantiating objects
+	* Objects become __PHP_Incomplete_Class, which re-serializes to the original value
+	*/
+	private function safeUnserialize($value)
+	{
+		if ( !is_string($value) || !is_serialized($value) ) return $value;
+		$unserialized = @unserialize(trim($value), ['allowed_classes' => false]);
+		return ( $unserialized === false && $value !== 'b:0;' ) ? $value : $unserialized;
 	}
 }

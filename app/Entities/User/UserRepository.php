@@ -195,7 +195,7 @@ class UserRepository
 	*/
 	public function getVisiblePages()
 	{
-		return unserialize(get_user_meta(get_current_user_id(), 'np_visible_posts', true));
+		return unserialize(get_user_meta(get_current_user_id(), 'np_visible_posts', true), ['allowed_classes' => false]);
 	}
 
 	/**
