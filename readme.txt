@@ -105,6 +105,9 @@ No. The menu synchronization currently only works within the pages post type.
 
 == Changelog ==
 
+= 3.3.3 =
+* Security Update. Thanks to Ananda Dhakal for the responsible disclosure.
+
 = 3.3.2 =
 * Fixes issue where post type settings were not saving correctly
 * Updates minimum PHP version to 8.0
