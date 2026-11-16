@@ -105,6 +105,12 @@ No. The menu synchronization currently only works within the pages post type.
 
 == Changelog ==
 
+= 3.3.4 =
+* Style tweaks.
+* Bug fix when saving default orderby and order settings per post type
+* Default post status now set to "Draft" when adding a child or inserting posts in the Nested Pages inteface
+* Bug fix where taxonomy terms were not being saved correctly in quick edit
+
 = 3.3.3 =
 * Security Update. Thanks to Ananda Dhakal for the responsible disclosure.
 

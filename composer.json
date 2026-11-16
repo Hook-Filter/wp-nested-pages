@@ -6,8 +6,8 @@
 	"license": "GPL",
 	"authors": [
 		{
-			"name": "Kyle Phillips",
-			"homepage": "https://github.com/kylephillips"
+			"name": "Hook & Filter",
+			"homepage": "https://hookandfilter.com"
 		}
 	],
 	"type": "wordpress-plugin",
