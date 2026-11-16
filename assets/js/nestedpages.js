@@ -1284,10 +1284,10 @@ NestedPages.QuickEditPost = function() {
     }
     plugin.populateFlatTaxonomies();
     if (plugin.initialData.hasOwnProperty("h_taxonomies")) {
-      var taxonomies2 = plugin.initialData.h_taxonomies;
-      for (i = 0; i < taxonomies2.length; i++) {
-        var tax = "#" + taxonomies2[i];
-        $(plugin.form).find(tax).attr("checked", "checked");
+      var taxonomies = plugin.initialData.h_taxonomies;
+      for (i = 0; i < taxonomies.length; i++) {
+        var tax = taxonomies[i];
+        $(plugin.form).find('input[id^="' + tax + '-"]').attr("checked", "checked");
       }
     }
     var datepickers = $(plugin.form).find(".np_datepicker");
@@ -1476,42 +1476,41 @@ NestedPages.QuickEditPost = function() {
     $(plugin.row).addClass(plugin.newData._status);
   };
   plugin.removeTaxonomyClasses = function() {
-    taxonomies = [];
-    var classes = $(plugin.row).attr("class").split(/\s+/);
-    for (i = 0; i < classes.length; i++) {
-      if (classes[i].substring(0, 3) === "in-") {
-        $(plugin.row).removeClass(classes[i]);
+    var classes = $(plugin.parent_li).attr("class").split(/\s+/);
+    for (var i2 = 0; i2 < classes.length; i2++) {
+      if (classes[i2].substring(0, 3) === "in-") {
+        $(plugin.parent_li).removeClass(classes[i2]);
       }
-      if (classes[i].substring(0, 4) === "inf-") {
-        $(plugin.row).removeClass(classes[i]);
+      if (classes[i2].substring(0, 4) === "inf-") {
+        $(plugin.parent_li).removeClass(classes[i2]);
       }
     }
   };
   plugin.addCategoryClasses = function() {
     if (!plugin.newData.hasOwnProperty("post_category")) return;
     var cats = plugin.newData.post_category;
-    for (i = 0; i < cats.length; i++) {
-      var taxclass = "in-category-" + cats[i];
-      $(plugin.row).addClass(taxclass);
+    for (var i2 = 0; i2 < cats.length; i2++) {
+      var taxclass = "in-category-" + cats[i2];
+      $(plugin.parent_li).addClass(taxclass);
     }
   };
   plugin.addHierarchicalClasses = function() {
     if (!plugin.newData.hasOwnProperty("tax_input")) return;
-    var taxonomies2 = plugin.newData.tax_input;
-    $.each(taxonomies2, function(tax, terms) {
+    var taxonomies = plugin.newData.tax_input;
+    $.each(taxonomies, function(tax, terms) {
       for (i = 0; i < terms.length; i++) {
         var taxclass = "in-" + tax + "-" + terms[i];
-        $(plugin.row).addClass(taxclass);
+        $(plugin.parent_li).addClass(taxclass);
       }
     });
   };
   plugin.addFlatClasses = function() {
     if (!plugin.newData.hasOwnProperty("flat_tax")) return;
-    var taxonomies2 = plugin.newData.flat_tax;
-    $.each(taxonomies2, function(tax, terms) {
+    var taxonomies = plugin.newData.flat_tax;
+    $.each(taxonomies, function(tax, terms) {
       for (i = 0; i < terms.length; i++) {
         var taxclass = "inf-" + tax + "-nps-" + terms[i];
-        $(plugin.row).addClass(taxclass);
+        $(plugin.parent_li).addClass(taxclass);
       }
     });
   };

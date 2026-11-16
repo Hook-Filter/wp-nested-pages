@@ -216,8 +216,8 @@ NestedPages.QuickEditPost = function()
 		if ( plugin.initialData.hasOwnProperty('h_taxonomies') ){
 			var taxonomies = plugin.initialData.h_taxonomies;
 			for ( i = 0; i < taxonomies.length; i++ ){
-				var tax = '#' + taxonomies[i];
-				$(plugin.form).find(tax).attr('checked', 'checked');
+				var tax = taxonomies[i];
+				$(plugin.form).find('input[id^="' + tax + '-"]').attr('checked', 'checked');
 			}
 		}
 
@@ -477,14 +477,13 @@ NestedPages.QuickEditPost = function()
 	// Remove Taxonomy Classes from the updated row
 	plugin.removeTaxonomyClasses = function()
 	{
-		taxonomies = [];
-		var classes = $(plugin.row).attr('class').split(/\s+/);
-		for ( i = 0; i < classes.length; i++ ){
+		var classes = $(plugin.parent_li).attr('class').split(/\s+/);
+		for ( var i = 0; i < classes.length; i++ ){
 			if ( classes[i].substring(0, 3) === 'in-'){ // hierarchical
-				$(plugin.row).removeClass(classes[i]);
+				$(plugin.parent_li).removeClass(classes[i]);
 			}
 			if ( classes[i].substring(0, 4) === 'inf-'){ // flat
-				$(plugin.row).removeClass(classes[i]);
+				$(plugin.parent_li).removeClass(classes[i]);
 			}
 		}
 	}
@@ -495,9 +494,9 @@ NestedPages.QuickEditPost = function()
 	{
 		if ( !plugin.newData.hasOwnProperty('post_category') ) return;
 		var cats = plugin.newData.post_category;
-		for ( i = 0; i < cats.length; i++ ){
+		for ( var i = 0; i < cats.length; i++ ){
 			var taxclass = 'in-category-' + cats[i];
-			$(plugin.row).addClass(taxclass);
+			$(plugin.parent_li).addClass(taxclass);
 		}
 	}
 
@@ -510,7 +509,7 @@ NestedPages.QuickEditPost = function()
 		$.each(taxonomies, function(tax, terms){
 			for (i = 0; i < terms.length; i++){
 				var taxclass = 'in-' + tax + '-' + terms[i];
-				$(plugin.row).addClass(taxclass);
+				$(plugin.parent_li).addClass(taxclass);
 			}
 		});
 	}
@@ -524,7 +523,7 @@ NestedPages.QuickEditPost = function()
 		$.each(taxonomies, function(tax, terms){
 			for (i = 0; i < terms.length; i++){
 				var taxclass = 'inf-' + tax + '-nps-' + terms[i];
-				$(plugin.row).addClass(taxclass);
+				$(plugin.parent_li).addClass(taxclass);
 			}
 		});
 	}
