@@ -37,7 +37,7 @@
 			<?php if ( $can_publish ) : ?>
 				<option value="publish"><?php _e( 'Published' ); ?></option>
 			<?php endif; ?>
-				<option value="draft"><?php _e( 'Draft' ); ?></option>
+				<option value="draft" selected><?php _e( 'Draft' ); ?></option>
 			</select>
 		</div>
 
