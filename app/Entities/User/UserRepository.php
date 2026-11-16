@@ -169,8 +169,10 @@ class UserRepository
 		if ( empty($post_type_settings->bulk_edit_roles) ) return true;
 		$allowed = false;
 		foreach ( $post_type_settings->bulk_edit_roles as $role ){
-			if ( current_user_can($role) ) $allowed = true;
-			break;
+			if ( current_user_can($role) ) {
+				$allowed = true;
+				break;
+			}
 		}
 		return $allowed;
 	}
