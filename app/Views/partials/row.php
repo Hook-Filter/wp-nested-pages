@@ -5,6 +5,7 @@
 $wpml = $this->integrations->plugins->wpml->installed;
 $wpml_pages = ( $wpml && $this->integrations->plugins->wpml->isDefaultLanguage()) ? true : false;
 if ( !$wpml ) $wpml_pages = true;
+$yoast = $this->integrations->plugins->yoast->installed;
 ?>
 <div class="row <?php echo apply_filters('nestedpages_row_css_classes', $row_classes, $this->post, $this->post_type); ?>">
 	
@@ -94,7 +95,7 @@ if ( !$wpml ) $wpml_pages = true;
 		</div>
 		<?php endif; ?>
 
-		<?php if ( $this->integrations->plugins->yoast->installed ) echo $this->post->score; ?>
+		<?php if ( $yoast ) echo $this->post->score; ?>
 
 		<div class="action-buttons">
 			
