@@ -202,6 +202,27 @@ settings_fields( 'nestedpages-posttypes' );
 					</div><!-- .row -->
 				</li>
 				<?php endif; ?>
+				
+				<li>
+					<div class="row">
+						<div class="description">
+							<p><strong><?php _e('Hide Post Information', 'wp-nested-pages'); ?></strong><br>
+							<?php _e('By default, the author, date, and Yoast status (if active) are displayed.', 'wp-nested-pages'); ?><br><br>
+							</p>
+						</div>
+						<div class="field">
+							<div class="nestedpages-checklist-field">
+								<label><input type="checkbox" name="nestedpages_posttypes[<?php echo esc_attr($type->name); ?>][hide_information][author]" value="true" <?php if ( array_key_exists('author', $type->hide_information) ) echo 'checked'; ?> /><?php _e('Author', 'wp-nested-pages'); ?></label>
+
+								<label><input type="checkbox" name="nestedpages_posttypes[<?php echo esc_attr($type->name); ?>][hide_information][date]" value="true" <?php if ( array_key_exists('date', $type->hide_information) ) echo 'checked'; ?> /><?php _e('Date', 'wp-nested-pages'); ?></label>
+
+								<?php if ( $this->integrations->plugins->yoast->installed ) : ?>
+								<label><input type="checkbox" name="nestedpages_posttypes[<?php echo esc_attr($type->name); ?>][hide_information][yoast]" value="true" <?php if ( array_key_exists('yoast', $type->hide_information) ) echo 'checked'; ?> /><?php _e('Yoast Status', 'wp-nested-pages'); ?></label>
+								<?php endif; ?>
+							</div>
+						</div>
+					</div><!-- .row -->
+				</li>
 
 				<li>
 					<div class="row">

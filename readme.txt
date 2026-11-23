@@ -105,6 +105,9 @@ No. The menu synchronization currently only works within the pages post type.
 
 == Changelog ==
 
+= 3.3.5 =
+* Adds option to hide post information in row by post type (date, author, Yoast status)
+
 = 3.3.4 =
 * Style tweaks.
 * Bug fix when saving default orderby and order settings per post type
