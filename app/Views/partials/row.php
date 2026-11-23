@@ -86,16 +86,24 @@ $yoast = $this->integrations->plugins->yoast->installed;
 
 		<?php echo $this->rowActions($assigned_pt); ?>
 
-		<?php if ( !$this->post->hierarchical ) : echo $this->post->hierarchical; ?>
+		<?php 
+		if ( !$this->post->hierarchical ) : 
+		$hidden_information = $this->post_type_repo->enabled_post_types[$this->post_type->name]['hide_information'];
+		echo $this->post->hierarchical; 
+		?>
 		<div class="np-post-columns">
 			<ul class="np-post-info">
+				<?php if ( !array_key_exists('author', $hidden_information) ) : ?>
 				<li><span class="np-author-display"><?php echo apply_filters('nestedpages_post_author', $this->post->author, $this->post); ?></span></li>
+				<?php endif; ?>
+				<?php if ( !array_key_exists('date', $hidden_information) ) : ?>
 				<li><?php echo get_the_date(); ?></li>
+				<?php endif; ?>
 			</ul>
 		</div>
 		<?php endif; ?>
 
-		<?php if ( $yoast ) echo $this->post->score; ?>
+		<?php if ( $yoast && !array_key_exists('yoast', $hidden_information) ) echo $this->post->score; ?>
 
 		<div class="action-buttons">
 			
