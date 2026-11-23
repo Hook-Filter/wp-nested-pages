@@ -20,7 +20,7 @@ settings_fields( 'nestedpages-admincustomization' ); ?>
 			<li>
 				<div class="row">
 					<div class="description">
-						<p><strong><?php _e('Menu Items', 'wp-nested-pages'); ?></strong><br><?php _e('Reorder, hide and rename admin menu items by user role. These changes do not effect actual permissions, only menu appearance.'); ?></p>
+						<p><strong><?php _e('Menu Items', 'wp-nested-pages'); ?></strong><br><?php _e('Reorder, hide and rename admin menu items by user role. These changes do not effect actual permissions, only menu appearance.', 'wp-nested-pages'); ?></p>
 						<p><strong><?php _e('Important: Plugin Menu Items ', 'wp-nested-pages'); ?></strong><br><?php _e('Some plugins may add menu items on activation. These new menu items will not display until the Nested Pages Admin Menu has been configured with these items.', 'wp-nested-pages'); ?></p>
 						<p>
 							<button class="np-btn np-btn-trash" data-nestedpages-reset-admin-menu><?php _e('Reset Admin Menu Settings', 'wp-nested-pages'); ?></button>
