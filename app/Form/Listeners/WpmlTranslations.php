@@ -44,7 +44,7 @@ class WpmlTranslations extends BaseHandler
 	private function setPostId()
 	{
 		if ( !isset($_POST['post_id']) ){
-			return $this->sendResponse(['status' => 'error', 'message' => __('Post Not Found', 'nestedapges')]);
+			return $this->sendResponse(['status' => 'error', 'message' => __('Post Not Found', 'wp-nested-pages')]);
 		}
 		$this->data['post_id'] = intval(sanitize_text_field($_POST['post_id']));
 	}
