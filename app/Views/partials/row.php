@@ -87,9 +87,9 @@ $yoast = $this->integrations->plugins->yoast->installed;
 		<?php echo $this->rowActions($assigned_pt); ?>
 
 		<?php 
-		if ( !$this->post->hierarchical ) : 
 		$hidden_information = $this->post_type_repo->enabled_post_types[$this->post_type->name]['hide_information'];
-		echo $this->post->hierarchical; 
+		if ( !is_array($hidden_information) ) $hidden_information = [];
+		if ( !$this->post->hierarchical ) : 
 		?>
 		<div class="np-post-columns">
 			<ul class="np-post-info">
